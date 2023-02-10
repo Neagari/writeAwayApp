@@ -12,17 +12,28 @@ router.post("/create", async(req, res) => {
 
         const newNote = await Note.create(body);
         console.log("newNotes....",newNote)
-        res.redirect(`/note/${newNote._id}`);
+        res.redirect(`/profile`);
 
     }catch(err){
         console.log("Note is not created",err)
-        
+
     }
 
 })
 
-router.get("/:noteId", (req, res) => {
-    res.render("notes/one-note")
+
+
+router.get("/:noteId", async(req, res) => {
+    try{
+        const noteId = req.params.noteId;
+
+        const singleNote = await Note.findById(noteId);
+        console.log("singleNote....",singleNote)
+
+        res.render("notes/one-note", singleNote)
+    }catch(err){
+        console.log("User id not found",err)
+    }
 })
 
 
