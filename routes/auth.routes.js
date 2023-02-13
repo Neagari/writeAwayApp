@@ -14,7 +14,7 @@ router.post("/signup",isLoggedOut, async(req,res)=>{
     const body = {...req.body}
 
     if(body.password.length < 6){
-        res.render('auth/signup', {errorMessage: 'Password too short', body: req.body})     
+        res.render('auth/signup', {errorMessage: 'Password too short', userData: req.body})     
     } else {
         const salt = bcrypt.genSaltSync(13);
         const passwordHash = bcrypt.hashSync(body.password, salt)
@@ -24,14 +24,15 @@ router.post("/signup",isLoggedOut, async(req,res)=>{
     
         try{
           await User.create(body)
-          res.send(body)
+          res.redirect('/auth/login')
         } catch(error){
             if(error.code === 11000){
                 console.log('Duplicate !')
                 res.render('auth/signup', {
-                errorMessage: 'User name already used',
+                errorMessage: 'User name already used', 
                  userData: req.body,
-                })
+                }) 
+                console.log('userData',userData) 
             } else {
                 res.render('auth/signup', {
                 errorMessage: error,
@@ -62,7 +63,7 @@ router.post("/signup",isLoggedOut, async(req,res)=>{
                 }
 
                 req.session.user = tempUser 
-                res.redirect('/profile')  
+                res.redirect('/auth/profile')  
             } else {
                     res.send('incorrect password') 
             }  
