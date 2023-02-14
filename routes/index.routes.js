@@ -4,8 +4,8 @@ const router = express.Router();
 const Note = require('../models/Note.model');
 
 /* GET home page */
-router.get("/", (req, res) => {
-  res.render("index");
+router.get("/", (req, res, next) => {
+  res.render("index", {user: req.session.user });
 });
 
 

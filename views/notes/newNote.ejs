@@ -1,0 +1,21 @@
+<form method="POST" action="<% if (update) { %>
+    /note/<%= noteToUpdate._id %>/edit
+    <% } else { %>
+        /note/create
+ <% } %>">
+    <label>
+        Title:
+        <input type="text" name="title" value="<% if (update) { %><%=noteToUpdate.title %><% } %>"/>
+    </label>
+    <label>
+        Content:
+        <input type="text" name="content" value="<% if (update) { %><%=noteToUpdate.content %><% } %>"/>
+    </label>
+    <button type="submit" > 
+        <% if (update) { %>
+        Update
+      <% } else { %>
+        Create Note
+      <% } %>
+    </button>
+</form>
