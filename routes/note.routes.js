@@ -23,7 +23,7 @@ router.get("/create" ,(req, res) => {
 router.get("/:noteId" ,async (req, res) => {
     try{
         const noteId = req.params.noteId;
-        const singleNote = await Note.findById(noteId)
+        const singleNote = await Note.findById(noteId).populate('user')
 
         res.render("notes/noteDetails", {singleNote})
 
@@ -37,12 +37,14 @@ router.get("/:noteId" ,async (req, res) => {
 router.post("/create",async(req, res) => {
     try{
         const body ={...req.body};
-        // console.log("userId.....", userId)
-        const newNote = await (await Note.create(body));
+        const user = awaitUser.find().populate('note')
+
+        console.log("userId.....", user._id)
+        const newNote = await (await Note.create(body, {user: user._id}));
         console.log("newNotes....",newNote)
         res.redirect(`/note`);
 
-    }catch(err){
+    }catch(err){ 
         console.log("Note is not created",err)
 
     }

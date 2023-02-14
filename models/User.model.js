@@ -26,7 +26,11 @@ const userSchema = new Schema(
     passwordHash: {
       type: String,
       required: true
-    }
+    },
+    note: {
+      type: Schema.Types.ObjectId,
+      ref: 'Note',
+    },
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
