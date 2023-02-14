@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 
 //
 router.get("/signup", isLoggedOut, (req, res) => {
-  res.render("auth/signup");
+  res.render("auth/signup", {user: undefined});
 });
 
 router.post("/signup", isLoggedOut, async (req, res) => {
@@ -47,7 +47,7 @@ router.post("/signup", isLoggedOut, async (req, res) => {
 });
 
 router.get("/login", isLoggedOut, (req, res) => {
-  res.render("auth/login");
+  res.render("auth/login", {user: undefined});
 });
 
 router.post("/login", isLoggedOut, async (req, res) => {
