@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title><%= WriteAway %></title>
+    <title>Hi</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
 
@@ -12,13 +12,13 @@
     <nav>
       <ul style="display: flex; gap: 15px">
         
-          <% if (user) { %>
+          <% if (typeof user === "undefined") { %> 
+            <li><a href="/auth/signup">Signup</a></li>
+            <li><a href="/auth/login">Login</a></li>
+           <% } else { %>
             <li><a href="/auth/profile">Profile<a></li>
               <li><a href="/note/create">Create Note</a></li>
               <li><a href="/auth/logout">Logout</a></li>
-           <% } else { %>
-            <li><a href="/auth/signup">Signup</a></li>
-            <li><a href="/auth/login">Login</a></li>
             <% } %>
       </ul>
     </nav>
