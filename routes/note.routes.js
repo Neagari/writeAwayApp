@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { isLoggedIn, isLoggedOut } = require('../middleware/route.guard');
 //Importing note model
 // const { isLoggedOut, isLoggedIn } = require("../middleware/route.guard");
 const Note = require("../models/Note.model")
@@ -6,26 +7,32 @@ const User = require("../models/User.model")
 
 
 //
-router.get("/",async (req, res) => {
+router.get("/",isLoggedIn,async (req, res) => {
     try{
+        const user = req.session.user
+        console.log("userIdddd...",user)
+        const userMatch = await User.findOne(user)
+        console.log("userMatch....", userMatch)
         const allNotes = await Note.find()
         console.log("allNotes....", allNotes)
-        res.render("notes/allNotes", {allNotes})
+        res.render("notes/allNotes", {allNotes,user})
     }catch(err){
         console.log("Note's are available!!,something went worng! ",err)
     }
 })
 
-router.get("/create" ,(req, res) => {
-    res.render("notes/newNote", {update: false})
+router.get("/create",isLoggedIn ,(req, res) => {
+    const user = req.session.user
+    res.render("notes/newNote", {user,update: false})
 })
 
-router.get("/:noteId" ,async (req, res) => {
+router.get("/:noteId" ,isLoggedIn,async (req, res) => {
     try{
+        const user = req.session.user
         const noteId = req.params.noteId;
         const singleNote = await Note.findById(noteId).populate('user')
 
-        res.render("notes/noteDetails", {singleNote})
+        res.render("notes/noteDetails", {singleNote, user})
 
     } catch(err){
         console.log("Note not found", err)
@@ -34,13 +41,17 @@ router.get("/:noteId" ,async (req, res) => {
     
 })
 
-router.post("/create",async(req, res) => {
+router.post("/create",isLoggedIn,async(req, res) => {
     try{
-        const body ={...req.body};
-        const user = awaitUser.find().populate('note')
 
-        console.log("userId.....", user._id)
-        const newNote = await (await Note.create(body, {user: user._id}));
+        const body =req.body;
+        const user = req.session.user
+        console.log("userCreate....",user)
+        const findUser = await User.findOne(user)
+
+        console.log("findUser.....", findUser._id)
+        const newNote = await Note.create( {...body,user:findUser._id});
+
         console.log("newNotes....",newNote)
         res.redirect(`/note`);
 
@@ -51,20 +62,21 @@ router.post("/create",async(req, res) => {
 
 })
 
-router.get("/:noteId/edit", async (req, res) => {
+router.get("/:noteId/edit", isLoggedIn,async (req, res) => {
     try{
+        const user = req.session.user;
         const noteId = req.params.noteId;
         const noteToUpdate = await Note.findById(noteId);
         console.log("updatedNote....",noteToUpdate)
 
-        res.render("notes/newNote",{noteToUpdate, update:true})
+        res.render("notes/newNote",{noteToUpdate, user,update:true})
 
     }catch(err){
         console.log("Note not found to update", err)
     }
 })
 
-router.post("/:noteId/edit", async (req, res) => {
+router.post("/:noteId/edit", isLoggedIn,async (req, res) => {
     try{
         const noteId = req.params.noteId;
         const body ={...req.body}; 
@@ -78,7 +90,7 @@ router.post("/:noteId/edit", async (req, res) => {
     }
 })
 
-router.get("/:noteId/delete", async (req, res) => {
+router.get("/:noteId/delete", isLoggedIn,async (req, res) => {
     try{
         const noteId = req.params.noteId;
         const deletedNote = await Note.findByIdAndDelete(noteId);
