@@ -53,6 +53,7 @@ router.get("/login", isLoggedOut, (req, res) => {
 
 router.post("/login", isLoggedOut, async (req, res) => {
   const body = req.body;
+  console.log("body..",body);
   const user = req.session.user;
 
   try {
@@ -70,17 +71,19 @@ router.post("/login", isLoggedOut, async (req, res) => {
         req.session.user = tempUser;
         res.redirect("/auth/profile");
       } else {
-        res.send("Incorrect password");
-        // res.render("auth/login",{
-        //   errorMessage: "Incorrect password",body,user
-        // });
+        // res.send("Incorrect password");
+        // console.log("Body...", body);
+        res.render("auth/login",{
+          errorMessage: "Incorrect password",dataBody:body
+        });
 
       }
     } else {
-      res.send("User not found");
-      // res.render("auth/login",{
-      //   errorMessage: "Incorrect password",user
-      // })
+      // res.send("User not found");
+      console.log("No user")
+      res.render("auth/login",{
+        errorMessage: "Incorrect username",dataBody:body
+      })
     }
   } catch (error) {
     console.log(error);

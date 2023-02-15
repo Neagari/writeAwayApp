@@ -31,6 +31,7 @@ router.get("/:noteId" ,isLoggedIn,async (req, res) => {
         const user = req.session.user
         const noteId = req.params.noteId;
         const singleNote = await Note.findById(noteId).populate('user')
+        console.log("singleNote....", singleNote)
 
         res.render("notes/noteDetails", {singleNote, user})
 
