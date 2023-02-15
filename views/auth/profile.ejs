@@ -3,4 +3,13 @@
 <p>Hello <%= user.username %></p>
 
 <button type="submit"><a href="/note/create">Create New Note</a></button>
-<button type="submit"><a href="/note">All Note</a></button>
+
+<% allNotes.forEach(note => { %>
+    <h1><%=note.title%></h1>
+    <button><a href="/note/<%=note._id %>">Details </a></button>
+    <form mothod="POST" action="/note/<%=note._id %>/delete">
+        <button type="submit"><a href="/note/<%=note._id %>/delete">Delete</a></button>
+    </form>
+    <% }) %> 
+
+<!-- <button type="submit"><a href="/note">All Note</a></button> -->

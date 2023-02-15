@@ -1,8 +1,11 @@
 <h1>Login page</h1>
 <form style="display: flex; flex-direction: column" method="POST" action="/auth/login">
-    <label>Username:<input type="text" name="username"/></label>
+    <label>Username:<input type="text" name="username" <% if (typeof errorMessage !== 'undefined') { %>
+        value="<%= body.username%>" <% } %>/></label>
         
     <label>Password:<input type="password" name="password" required /></label>
     <button type="submit">LogIn</button>
 </form>
-
+<% if (typeof errorMessage !== 'undefined') { %>
+    <p style="color: red"><%= errorMessage %></p>
+   <% } %>

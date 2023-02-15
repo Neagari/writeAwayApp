@@ -12,11 +12,12 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post("/signup", isLoggedOut, async (req, res) => {
   //console.log(req.body)
   const body = { ...req.body };
+  const user = req.session.user;
 
   if (body.password.length < 6) {
     res.render("auth/signup", {
       errorMessage: "Password too short",
-      userData: req.body,
+      userData: req.body, user
     });
   } else {
     const salt = bcrypt.genSaltSync(13);
@@ -52,6 +53,8 @@ router.get("/login", isLoggedOut, (req, res) => {
 
 router.post("/login", isLoggedOut, async (req, res) => {
   const body = req.body;
+  const user = req.session.user;
+
   try {
     const userMatch = await User.find({ username: body.username });
     // console.log(userMatch)
@@ -67,10 +70,17 @@ router.post("/login", isLoggedOut, async (req, res) => {
         req.session.user = tempUser;
         res.redirect("/auth/profile");
       } else {
-        res.send("incorrect password");
+        res.send("Incorrect password");
+        // res.render("auth/login",{
+        //   errorMessage: "Incorrect password",body,user
+        // });
+
       }
     } else {
       res.send("User not found");
+      // res.render("auth/login",{
+      //   errorMessage: "Incorrect password",user
+      // })
     }
   } catch (error) {
     console.log(error);
@@ -80,7 +90,8 @@ router.post("/login", isLoggedOut, async (req, res) => {
 router.get("/profile", isLoggedIn, async (req, res) => {
   console.log("SESSION ===>", req.session);
 
-  res.render("auth/profile", { user: req.session.user });
+  // res.render("auth/profile", { user: req.session.user });
+  res.redirect("/note");
 });
 
 router.get("/logout", isLoggedIn, async (req, res) => {

@@ -1,10 +1,7 @@
-<h1>Single notes</h1>
+<h1>Note Details</h1>
 <h1>Title: <%=singleNote.title%></h1>
 <p>Content: <%=singleNote.content%></p>
-<p>Name: <%=singleNote.user.username %></p>
+<p>Update-date: <%=singleNote.updatedAt%></p>
 <button type="submit"><a href="/note/<%=singleNote._id %>/edit">Edit</a></button>
-<form mothod="POST" action="/note/<%=singleNote._id %>/delete">
-    <button type="submit"><a href="/note/<%=singleNote._id %>/delete">Delete</a></button>
-</form>
-<button type="submit"><a href="/note">Notes</a></button>
+<button type="submit"><a href="/note">Profile</a></button>
 

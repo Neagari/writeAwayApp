@@ -13,9 +13,9 @@ router.get("/",isLoggedIn,async (req, res) => {
         console.log("userIdddd...",user)
         const userMatch = await User.findOne(user)
         console.log("userMatch....", userMatch)
-        const allNotes = await Note.find()
+        const allNotes = await Note.find({user:userMatch._id})
         console.log("allNotes....", allNotes)
-        res.render("notes/allNotes", {allNotes,user})
+        res.render("auth/profile", {allNotes,user})
     }catch(err){
         console.log("Note's are available!!,something went worng! ",err)
     }
