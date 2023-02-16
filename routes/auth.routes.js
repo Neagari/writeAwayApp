@@ -74,7 +74,7 @@ router.post("/login", isLoggedOut, async (req, res) => {
         // res.send("Incorrect password");
         // console.log("Body...", body);
         res.render("auth/login",{
-          errorMessage: "Incorrect password",dataBody:body
+          errorMessage: "INCORRECT PASSWORD",dataBody:body
         });
 
       }
@@ -82,7 +82,7 @@ router.post("/login", isLoggedOut, async (req, res) => {
       // res.send("User not found");
       console.log("No user")
       res.render("auth/login",{
-        errorMessage: "Incorrect username",dataBody:body
+        errorMessage: "INCORRECT USERNAME",dataBody:body
       })
     }
   } catch (error) {

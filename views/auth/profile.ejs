@@ -1,15 +1,15 @@
-<h1>profile page</h1>
+<!-- <h1>profile page</h1> -->
 <!-- <button type="submit"><a href="/note/create">Create Note</a></button> -->
-<p>Hello <%= user.username %></p>
-
-<button type="submit"><a href="/note/create">Create New Note</a></button>
+<h2 class="hello">Welcome <%= user.username %></h2>
+<div class="profileButtons">
+<button class="new-note" type="submit"><a href="/note/create">New Note...</a></button>
 
 <% allNotes.forEach(note => { %>
     <h1><%=note.title%></h1>
-    <button><a href="/note/<%=note._id %>">Details </a></button>
+    <button class="note-details" ><a href="/note/<%=note._id %>">Note Details...</a></button>
     <form mothod="POST" action="/note/<%=note._id %>/delete">
-        <button type="submit"><a href="/note/<%=note._id %>/delete">Delete</a></button>
+        <button class="delete-button" type="submit"><a class="deleteButton" href="/note/<%=note._id %>/delete">Delete...</a></button>
     </form>
-    <% }) %> 
+    <% }) %> </div>
 
 <!-- <button type="submit"><a href="/note">All Note</a></button> -->

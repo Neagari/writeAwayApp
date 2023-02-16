@@ -1,15 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;700&display=swap');
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #252525;
+  color: #F6ECC9;
+  font-family: 'Nunito', sans-serif;
+}
+
+.layoutButtons{
+  display: flex;
+  justify-content:flex-end;
+  text-decoration:none;
+  margin-top: 10px;
+  margin-right: 10px;
+  }
+
+.homePageImg{
+  background-image: url(/public/images/logo.png);
+  background-position: center;
+  margin-left: 350px;
+  margin-top: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px;
+}
+
+.homePageImg>h2{
+  display: flex;
+  justify-content: center;
+  margin-left: 160px;
+}
+.homePageImg>p{
+  display: flex;
+  justify-content: center;
+  margin-left: 170px;
+
+}
+
+.logo {
+    margin: auto;
+     max-width: 500px;
+     margin-top: 20px;
+   }
+
+   .logo>img {
+   position: absolute;
+   top: 150px;
+   right: 500px;
+   }
+
+ .layoutButtons a {
+ padding-left: 40px;
+ padding-right: 40px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+font-size: 13px;
+background-color: #EA7A53;
+border-radius: 15px;
+color: #F6ECC9;
+border: none;
+text-decoration:none;
+ }  
+
+.content {
+  margin-bottom: 100px;
+  margin-top: 400px;
+}
+.username{
+  display: flex;
+  justify-content: center ;
+  margin-top: 180px;
+  margin-right: 5px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.password{
+  display: flex;
+  justify-content: center ;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+.email{
+  display: flex;
+  justify-content: center ;
+  margin-top: 180px;
+  margin-right: 5px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+.container {
+margin: auto;
+ max-width: 500px;
+ margin-bottom: 5px;
+ padding-left: 40px;
+ padding-right: 40px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ display: flex;
+ justify-content: center;
+font-size: 13px;
+background-color: #F6ECC9;
+border-radius: 15px;
+color: #EA7A53;
+border: none;
+
+}
+.loginButton {
+ margin: auto;
+ max-width: 500px;
+ margin-top: 20px;
+ padding-left: 40px;
+ padding-right: 40px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+ display: flex;
+ justify-content: center;
+font-size: 13px;
+background-color: #EA7A53;
+border-radius: 15px;
+color: #F6ECC9;
+border: none;
+text-decoration:none;
+}
+
+.hello{
+  margin-top:20px ;
+  margin-bottom: 50px;
+
+}
+
+.profileButtons>button>a{
+  color: #F6ECC9;
+  text-decoration:none;
+}
+.deleteButton{
+  color: #F6ECC9;
+  text-decoration:none;
+}
+
+.new-note{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ font-size: 13px;
+ background-color: #EA7A53;
+ border-radius: 15px;
+ color: #F6ECC9;
+ border: none;
+ margin-bottom: 10px;
+ text-decoration:none;
+}
+.note-details{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ font-size: 13px;
+ background-color: #EA7A53;
+ border-radius: 15px;
+ color: #F6ECC9;
+ border: none;
+ margin-bottom: 10px;
+ text-decoration:none;
+}
+.delete-button{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ font-size: 13px;
+ background-color: #EA7A53;
+ border-radius: 15px;
+ color: #F6ECC9;
+ border: none;
+ margin-bottom: 10px;
+}
+
+.detailContainer>button>a{
+  color: #F6ECC9;
+  text-decoration:none;
 }
 
 
+.editNote{
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ font-size: 13px;
+ background-color: #EA7A53;
+ border-radius: 15px;
+ color: #F6ECC9;
+ border: none;
+ margin-bottom: 10px;
+ }
 
+.myNotes1 {
+  padding-left: 40px;
+ padding-right: 40px;
+ padding-top: 10px;
+ padding-bottom: 10px;
+font-size: 13px;
+background-color: #EA7A53;
+border-radius: 15px;
+color: #F6ECC9;
+border: none;
+margin-bottom: 10px;
+text-decoration:none;
+}
+
+.newnoteContainer{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+.titleContainer{
+  display: flex;
+  justify-content: center ;
+  margin-top: 180px;
+  margin-right: 5px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+.contentContainer{
+  display: flex;
+  justify-content: center ;
+  margin-top: 180px;
+  margin-right: 5px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  max-width: 700px;
+  margin: auto;
+}
+
+.newnoteInput{
+
+}
+
+/* .create{
+  margin: auto;
+  max-width: 500px;
+  margin-top: 20px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+ font-size: 13px;
+ background-color: #EA7A53;
+ border-radius: 15px;
+ color: #F6ECC9;
+ border: none;
+
+} */
+.navs {
+  display: inline-block;
+  float: right;
+}
 a {
   color: #00b7ff;
+  
 }
 
 h1 {
-  color: 15px;
+  font-weight: bold;
 }

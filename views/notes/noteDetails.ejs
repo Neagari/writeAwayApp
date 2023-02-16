@@ -1,7 +1,8 @@
 <h1>Note Details</h1>
+<div class="detailContainer">
 <h1>Title: <%=singleNote.title%></h1>
 <p>Content: <%=singleNote.content%></p>
 <p>Date: <%=singleNote.updatedAt.toString().slice(4,21)%></p>
-<button type="submit"><a href="/note/<%=singleNote._id %>/edit">Edit</a></button>
-<button type="submit"><a href="/note">Profile</a></button>
-
+<button class="editNote" type="submit"><a href="/note/<%=singleNote._id %>/edit">Edit Note...</a></button>
+<button class="myNotes1" type="submit"><a href="/note">My Notes...</a></button>
+</div>

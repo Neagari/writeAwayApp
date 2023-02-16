@@ -1,11 +1,16 @@
-<h1>Login page</h1>
-<form style="display: flex; flex-direction: column" method="POST" action="/auth/login">
-    <label>Username:<input type="text" name="username" <% if (typeof errorMessage !== 'undefined') { %>
+<!-- <h1>Login page</h1> -->
+<div class="logo">
+    <img src="/images/logo.png" style="width: 450px"/>
+</div>
+<div class="content">
+<form method="POST" action="/auth/login">
+    <label class="username">Username:<input class="container" type="text" name="username" <% if (typeof errorMessage !== 'undefined') { %>
         value="<%= dataBody.username%>" <% } %>/></label>
         
-    <label>Password:<input type="password" name="password" required /></label>
-    <button type="submit">LogIn</button>
+    <label class="password">Password:<input class="container"type="password" name="password" required /></label>
+    <button class="loginButton" type="submit"> Log in...</button>
 </form>
+</div>
 <% if (typeof errorMessage !== 'undefined') { %>
     <p style="color: red"><%= errorMessage %></p>
    <% } %>

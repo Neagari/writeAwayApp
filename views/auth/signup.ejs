@@ -1,14 +1,19 @@
-<h1>Signup page</h1>
+<div class="logo">
+    <img src="/images/logo.png" style="width: 450px"/>
+</div>
+<div class="content">
 <form style="display: flex; flex-direction: column" method="POST" action="/auth/signup">
-    <label>Username:<input type="text" name="username" <% if (typeof errorMessage !== 'undefined') { %>
+    <label class="username">Username:<input class="container" type="text" name="username" <% if (typeof errorMessage !== 'undefined') { %>
         value="<%= userData.username%>" <% } %>/></label>
 
-    <label>Email:<input type="email" name="email" required <% if (typeof errorMessage !== 'undefined') { %>
+    <label class="email">Email:<input class="container" type="email" name="email" required <% if (typeof errorMessage !== 'undefined') { %>
         value="<%= userData.email%>" <% } %>/></label>
         
-    <label>Password:<input type="password" name="password" required /></label>
-    <button type="submit">SignUp</button>
+    <label class="password">Password:<input class="container" type="password" name="password" required /></label>
+    
+    <button class = "loginButton"type="submit">Signup</button>
 </form>
+</div>
 <% if (typeof errorMessage !== 'undefined') { %>
     <p style="color: red"><%= errorMessage %></p>
    <% } %>
