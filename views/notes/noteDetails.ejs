@@ -2,10 +2,10 @@
   <h1>Note Details</h1>
   <div class="card" style="width: 20rem">
     <div class="card-body">
-      <h1 class="card-title">Title: <%=singleNote.title%></h1>
-      <p class="card-text">Content: <%=singleNote.content%></p>
+      <h1 class="card-title"><%=singleNote.title%></h1>
+      <p class="card-text"><%=singleNote.content%></p>
       <p class="card-text">
-        Date: <%=singleNote.updatedAt.toString().slice(4,21)%>
+        <%=singleNote.updatedAt.toString().slice(4,21)%>
       </p>
       <button class="editNote" type="submit">
         <a href="/note/<%=singleNote._id %>/edit">Edit Note...</a>
