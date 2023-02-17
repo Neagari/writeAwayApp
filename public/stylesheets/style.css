@@ -141,6 +141,18 @@ text-decoration:none;
   color: #F6ECC9;
   text-decoration:none;
 }
+
+.card{
+  background-color: #F6ECC9
+}
+
+.card-title{
+  color:  #EA7A53;
+}
+.card-text{
+  color:  #EA7A53
+}
+
 .deleteButton{
   color: #F6ECC9;
   text-decoration:none;
@@ -185,11 +197,17 @@ text-decoration:none;
  margin-bottom: 10px;
 }
 
-.detailContainer>button>a{
+.details-container{
+  margin-top: 120px;
+}
+.card-body > button>a{
   color: #F6ECC9;
   text-decoration:none;
 }
-
+.note-details > a{
+  color: #F6ECC9;
+  text-decoration:none;
+}
 
 .editNote{
   padding-left: 40px;

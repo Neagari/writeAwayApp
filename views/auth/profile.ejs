@@ -1,15 +1,35 @@
-<!-- <h1>profile page</h1> -->
-<!-- <button type="submit"><a href="/note/create">Create Note</a></button> -->
+
 <h2 class="hello">Welcome <%= user.username %></h2>
 <div class="profileButtons">
-<button class="new-note" type="submit"><a href="/note/create">New Note...</a></button>
+  <button class="new-note" type="submit">
+    <a href="/note/create">New Note...</a>
+  </button>
+  </div>
 
-<% allNotes.forEach(note => { %>
-    <h1><%=note.title%></h1>
-    <button class="note-details" ><a href="/note/<%=note._id %>">Note Details...</a></button>
-    <form mothod="POST" action="/note/<%=note._id %>/delete">
-        <button class="delete-button" type="submit"><a class="deleteButton" href="/note/<%=note._id %>/delete">Delete...</a></button>
-    </form>
-    <% }) %> </div>
+<div class="container-fluidb container-fluid-custom pb-5 mb-5">
 
-<!-- <button type="submit"><a href="/note">All Note</a></button> -->
+    <div class="row">
+        <% allNotes.forEach(note => { %>
+            <div class="col-3">
+        <div class="col sm-3 mb-4">
+            <div class="card border primary" style="min-height: 210px;">
+                <h5 class="card-title"><%=note.title%></h5>
+                <p class="card-text"><%=note.content.slice(0,30)%></p>
+                  <button class="note-details">
+                    <a href="/note/<%=note._id %>">Note Details...</a>
+                  </button>
+                  <form mothod="POST" action="/note/<%=note._id %>/delete">
+                    <button class="delete-button" type="submit">
+                      <a class="deleteButton" href="/note/<%=note._id %>/delete"
+                        >Delete...</a
+                      >
+                    </button>
+                  </form>
+            </div>
+        </div>
+    </div>
+        <% }) %>
+    </div>
+
+</div>
+  
